@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace school_work
 {
@@ -23,6 +24,13 @@ namespace school_work
             Console.WriteLine(bob);
             Console.ReadLine();
 
+            Penguin penguin = new Penguin();
+
+            foreach (String food in penguin.Diet)
+            {
+                Console.WriteLine(food);
+            }
+            Console.ReadLine();
         }
     }
 }
