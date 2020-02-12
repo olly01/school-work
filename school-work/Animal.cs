@@ -30,5 +30,10 @@ namespace school_work
                 return _diet;
             }
         }
+
+        public void Eat()
+        {
+
+        }
     }
 }

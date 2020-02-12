@@ -6,14 +6,10 @@ namespace school_work
 {
     class Keeper : Staff
     {
-        public List<Animal> _AnimalList ;
-
+        public List<Animal> _AnimalList;
         public Keeper(String name, List<Animal> AnimalList) : base(name)
         {
             this._AnimalList = AnimalList;
-            Console.WriteLine(AnimalList.Count);
         }
-            
     }
-
 }
