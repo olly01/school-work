@@ -19,7 +19,8 @@ namespace school_work
             this.Health = health;
         }
 
-        private Int64 Health;
+
+        
 
         protected List<string> _diet;
 
