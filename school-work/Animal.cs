@@ -32,9 +32,16 @@ namespace school_work
             }
         }
 
-        public void Eat()
+        public bool Eat(string Food)
         {
-
+            foreach (string item in _diet)
+            {
+                if (Food == item)
+                {
+                    return (true);
+                }
+            }
+            return (false);
         }
     }
 }
