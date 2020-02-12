@@ -11,9 +11,8 @@ namespace school_work
         public Keeper(String name, List<Animal> AnimalList) : base(name)
         {
             this._AnimalList = AnimalList;
-            Console.WriteLine(AnimalList.Count);
         }
-            
+
     }
 
 }

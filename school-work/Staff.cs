@@ -6,10 +6,20 @@ namespace school_work
 {
     class Staff
     {
-        public String Name { get; set; }
-        public Staff(string name)
+        private string _name; //Private Field
+
+
+        public string Name //property
+        {
+            get { return _name; }
+            set {
+                _name = value; }
+        }
+
+        public Staff(string name) // constructor
         {
             this.Name = name;
         }
+
     }
 }
