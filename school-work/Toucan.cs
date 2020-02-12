@@ -4,11 +4,11 @@ using System.Text;
 
 namespace school_work
 {
-    class Penguin : Bird
+    class Toucan : Bird
     {
-        public Penguin()
+        public Toucan()
         {
-            _diet = new List<string>() { "Fish", "Squid", "Krill" };
+            _diet = new List<string>() { "Fruit", "Insects" };
         }
     }
 }
