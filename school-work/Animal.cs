@@ -4,11 +4,20 @@ using System.Text;
 
 namespace school_work
 {
-    class Animal
+     public class Animal
     {
-        private String Name;
-        private Int64 Age;
+        public String Name;
+        private int Age;
         private Boolean Sex;
-        private Int64 Health;
+        private int Health;
+
+        public Animal(string name, int age, Boolean sex, int health)
+        {
+            this.Name = name;
+            this.Age = age;
+            this.Sex = sex;
+            this.Health = health;
+        }
+
     }
 }
