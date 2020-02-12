@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace school_work
 {
@@ -6,7 +8,13 @@ namespace school_work
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello dddWorld!");
+            Penguin penguin = new Penguin();
+
+            foreach (String food in penguin.Diet)
+            {
+                Console.WriteLine(food);
+            }
+            Console.ReadLine();
         }
     }
 }
