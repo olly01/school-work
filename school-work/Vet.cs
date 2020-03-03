@@ -6,6 +6,11 @@ namespace school_work
 {
     class Vet : Staff
     {
+        public Vet(string name) : base (name)
+        {
+
+        }
+
         public void Treat(Animal reviveanimal)
         {
             reviveanimal.medicine();

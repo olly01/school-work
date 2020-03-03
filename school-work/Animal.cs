@@ -10,6 +10,7 @@ namespace school_work
         private int Age;
         private Boolean Sex;
         private int Health;
+        protected List<string> _diet;
 
         public Animal(string name, int age, Boolean sex, int health) // constructor
         {
@@ -17,7 +18,6 @@ namespace school_work
             this.Age = age;
             this.Sex = sex;
             this.Health = health;
-        }
         }
 
         public bool Eat(string Food)
@@ -59,6 +59,11 @@ namespace school_work
                 Console.WriteLine("No mutant babies");
                 return (null);
             }
+        }
+
+        public void medicine()
+        {
+
         }
     }
 }
