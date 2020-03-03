@@ -17,7 +17,7 @@ namespace school_work
             foreach (Animal animal in _AnimalList)
             {
                 animal.Eat(food);
-                Console.WriteLine(_name + " has fed " + animal.Name)
+                Console.WriteLine(_name + " has fed " + animal.Name);
             }
         }
 
