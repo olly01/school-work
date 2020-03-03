@@ -6,7 +6,7 @@ namespace school_work
 {
     class Staff
     {
-        private string _name; //Private Field
+        public string _name; //Private Field
 
 
         public string Name //property

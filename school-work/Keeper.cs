@@ -12,5 +12,14 @@ namespace school_work
             this._AnimalList = AnimalList;
         }
 
+        public void Feed(string food)
+        {
+            foreach (Animal animal in _AnimalList)
+            {
+                animal.Eat(food);
+                Console.WriteLine(_name + " has fed " + animal.Name)
+            }
+        }
+
     }
 }
