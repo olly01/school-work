@@ -30,7 +30,16 @@ namespace school_work
 
             Console.ReadLine();
 
+            Console.WriteLine("A new ostrich chick has just hatched");
+            Console.WriteLine("What would you like to name it");
+            string name = Console.ReadLine();
+            Animal chick = animal.reproduce("Ostrich", name, true);
+            animallist.Add(chick);
 
+            foreach (Animal item in animallist)
+            {
+                Console.WriteLine(item.Name);
+            }
         }
     }
 }

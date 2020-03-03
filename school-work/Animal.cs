@@ -43,5 +43,34 @@ namespace school_work
             }
             return (false);
         }
+
+        public Animal reproduce(string species, string baby_name, bool baby_sex)
+        {
+            if (species == "Toucan")
+            {
+                Toucan child = new Toucan(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else if (species == "Penguin")
+            {
+                Penguin child = new Penguin(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else if (species == "Pelican")
+            {
+                Pelican child = new Pelican(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else if (species == "Ostrich")
+            {
+                Ostrich child = new Ostrich(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else
+            {
+                Console.WriteLine("No mutant babies");
+                return (null);
+            }
+        }
     }
 }
