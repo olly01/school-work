@@ -19,5 +19,17 @@ namespace school_work
             this.Health = health;
         }
         }
+
+        public bool Eat(string Food)
+        {
+            foreach (string item in _diet)
+            {
+                if (Food == item)
+                {
+                    return (true);
+                }
+            }
+            return (false);
+        }
     }
 }
