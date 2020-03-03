@@ -11,25 +11,13 @@ namespace school_work
         private Boolean Sex;
         private int Health;
 
-        public Animal(string name, int age, Boolean sex, int health)
+        public Animal(string name, int age, Boolean sex, int health) // constructor
         {
             this.Name = name;
             this.Age = age;
             this.Sex = sex;
             this.Health = health;
         }
-
-
-        
-
-        protected List<string> _diet;
-
-        public List<string> Diet 
-        {
-            get
-            {
-                return _diet;
-            }
         }
 
         public bool Eat(string Food)
