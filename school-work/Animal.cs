@@ -23,14 +23,14 @@ namespace school_work
 
         public bool Eat(string Food)
         {
-            foreach (string item in _diet)
+            if (_diet.Contains(Food))
             {
-                if (Food == item)
-                {
-                    return (true);
-                }
+                return true;
             }
-            return (false);
+            else
+            {
+                return false;
+            }
         }
 
         public Animal reproduce(string species, string baby_name, bool baby_sex)

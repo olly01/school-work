@@ -7,8 +7,11 @@ namespace school_work
     class Keeper : Staff
     {
         public List<Animal> _AnimalList;
-        public Keeper(String name) : base(name)
+        private Zoo zoo;
+
+        public Keeper(String name, Zoo zoo) : base(name)
         {
+            this.zoo = zoo;
             _AnimalList = new List<Animal>();
             Role = "Keeper";
         }
@@ -18,11 +21,20 @@ namespace school_work
             string food;
             foreach (Animal animal in _AnimalList)
             {
-                Console.WriteLine("What should " + _name + "feed " + animal.Name);
-                food = Console.ReadLine();
+                Console.WriteLine("\n{0} eats:\n", animal.Name);
+
+                foreach (string foodItem in animal._diet) //FIX THISSSSSS
+                {
+                    Console.WriteLine(foodItem);
+                }
+
+                Console.WriteLine("\nWhat should " + _name + "feed " + animal.Name);
+                food = (Console.ReadLine()).ToLower();
+
                 if (animal.Eat(food))
                 {
                     Console.WriteLine(_name + " has fed " + animal.Name);
+                    zoo.Eat(food);
                 }
                 else
                 {

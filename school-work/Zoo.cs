@@ -18,7 +18,7 @@ namespace school_work
             set { _staff = value; }
         }
 
-        public static void createFoodStore()
+        public void createFoodStore()
         {
             _foodStore.Add("fish", 10);
             _foodStore.Add("fruit", 10);
@@ -33,21 +33,15 @@ namespace school_work
             _foodStore.Add("seeds", 10);
         }
 
-        public static void Eat(string food)
+        public void Eat(string food)
         {
             if (_foodStore.ContainsKey(food) == true)
             {
-                Console.WriteLine("{0} : {1}", food, _foodStore[food]);
                 _foodStore[food]--;
-                Console.WriteLine("{0} : {1}\n", food, _foodStore[food]);
-            }
-            else
-            {
-                Console.WriteLine("We do not stock that food\n");
             }
         }
 
-        public static void Restock()
+        public void Restock()
         {
             int restock = 0;
             string food = "";
@@ -95,11 +89,12 @@ namespace school_work
 
             
         }
+
         public void AddStaff(string role, string name)
         {
             if (role == "Keeper")
             {
-                Keeper NewKeeper = new Keeper(name);
+                Keeper NewKeeper = new Keeper(name, this);
                 _staff.Add(NewKeeper);
             }
             else if (role == "Vet")
