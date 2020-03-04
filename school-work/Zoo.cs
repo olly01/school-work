@@ -10,6 +10,7 @@ namespace school_work
         //private List<Enclosures> enclosures = new List<Enclosures>(); 
         public List<Animal> animals = new List<Animal>();
         private List<Staff> _staff = new List<Staff>();
+        public List<Enclosure> enclosures = new List<Enclosure>();
         static Dictionary<string, int> _foodStore = new Dictionary<string, int>();
 
         public List<Staff> Staff
@@ -67,7 +68,7 @@ namespace school_work
                 Toucan NewToucan = new Toucan(name, age, sex, health);
                 animals.Add(NewToucan);
             }
-            else if(species == "Ostrich")
+            else if (species == "Ostrich")
             {
                 Ostrich NewOstrich = new Ostrich(name, age, sex, health);
                 animals.Add(NewOstrich);
@@ -87,7 +88,7 @@ namespace school_work
                 Console.WriteLine("Invalid Species");
             }
 
-            
+
         }
 
         public void AddStaff(string role, string name)
@@ -110,21 +111,26 @@ namespace school_work
 
         public void ShowAnimals()
         {
-            foreach (Animal animal in animals)
+            foreach (Enclosure enclosure in enclosures)
             {
-                Console.WriteLine(animal.Name);
-                Console.WriteLine("Species: " + animal.Species);
-                Console.WriteLine(("Age: " + animal.Age)) ;
-                Console.WriteLine("Health: " + animal.Health);
-                if (animal.Sex == true)
-                {
-                    Console.WriteLine("Sex: Male");
-                }
-                else
-                {
-                    Console.WriteLine("Sex: Female");
-                }
                 Console.WriteLine();
+                Console.WriteLine(enclosure._contents + " Enclosure:");
+                foreach (Animal animal in enclosure.animals)
+                {
+                    Console.WriteLine(animal.Name);
+                    Console.WriteLine("Species: " + animal.Species);
+                    Console.WriteLine(("Age: " + animal.Age));
+                    Console.WriteLine("Health: " + animal.Health);
+                    if (animal.Sex == true)
+                    {
+                        Console.WriteLine("Sex: Male");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sex: Female");
+                    }
+                    Console.WriteLine();
+                }
             }
         }
 
@@ -137,7 +143,13 @@ namespace school_work
             }
         }
 
+        public void AddEnclosure(string contents, int size, int WaterLevel, int temperature, bool enclosed, int PlantLife)
+        {
+            Enclosure NewEnclosure = new Enclosure(contents, size, WaterLevel, temperature, enclosed, PlantLife);
+            enclosures.Add(NewEnclosure);
+        }
 
-            
     }
 }
+
+//when feeding animals, if you try to feed them something they dont eat, they wont eat it and  it wont ask you to try again

@@ -11,25 +11,79 @@ namespace school_work
 
             Zoo zoo = new Zoo();
             Random GetRandom = new Random();
+            bool sex;
+            int DetermineSex;
+
+            zoo.AddEnclosure("Toucan", 2, 1, 23, true, 3);
+            zoo.AddEnclosure("Penguin", 2, 3, -3, false, 0);
+            zoo.AddEnclosure("Pelican", 2, 2, 20, false, 2);
+            zoo.AddEnclosure("Ostrich", 3, 1, 30, false, 1);
 
             for (int i= 1 ; i<=4; i++)
             {
-                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), true, GetRandom.Next(0,10));
+                DetermineSex = GetRandom.Next(1, 3);
+                if (DetermineSex == 1)
+                {
+                    sex = true;
+                }
+                else
+                {
+                    sex = false;
+                }
+                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), sex, GetRandom.Next(0,10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), true, GetRandom.Next(0, 10));
+                DetermineSex = GetRandom.Next(1, 3);
+                if (DetermineSex == 1)
+                {
+                    sex = true;
+                }
+                else
+                {
+                    sex = false;
+                }
+                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), sex, GetRandom.Next(0, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), true, GetRandom.Next(0, 10));
+                DetermineSex = GetRandom.Next(1, 3);
+                if (DetermineSex == 1)
+                {
+                    sex = true;
+                }
+                else
+                {
+                    sex = false;
+                }
+                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), sex, GetRandom.Next(0, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), true, GetRandom.Next(0, 10));
+                DetermineSex = GetRandom.Next(1, 3);
+                if (DetermineSex == 1)
+                {
+                    sex = true;
+                }
+                else
+                {
+                    sex = false;
+                }
+                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), sex, GetRandom.Next(0, 10));
+            }
+
+            foreach (Animal animal in zoo.animals)
+            {
+                foreach (Enclosure enclosure in zoo.enclosures)
+                {
+                    if (enclosure._contents == animal.Species)
+                    {
+                        enclosure.AddAnimal(animal);
+                    }
+                }
             }
 
             for (int i = 1; i <= 4; i++)
@@ -57,7 +111,6 @@ namespace school_work
             string name;
             string species;
             int age;
-            bool sex;
             int health;
             string role;
 
@@ -105,6 +158,15 @@ namespace school_work
                         Console.WriteLine("Out of 10, how healthy is the animal");
                         health = Convert.ToInt32(Console.ReadLine());
                         zoo.AddAnimal(species, name, age, sex, health);
+
+                        foreach (Enclosure enclosure in zoo.enclosures)
+                        {
+                            if (zoo.animals[zoo.animals.Count].Species == enclosure._contents)
+                            {
+                                enclosure.AddAnimal(zoo.animals[zoo.animals.Count]);
+                            }
+                        }
+
                         break;
                     case "5":
                         Console.WriteLine("What is the new employee's name");
