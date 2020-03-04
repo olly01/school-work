@@ -8,7 +8,7 @@ namespace school_work
     {
         public Vet(string name) : base (name)
         {
-
+            Role = "Vet";
         }
 
         public void Treat(Animal reviveanimal)
