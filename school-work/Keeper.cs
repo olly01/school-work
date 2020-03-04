@@ -7,19 +7,33 @@ namespace school_work
     class Keeper : Staff
     {
         public List<Animal> _AnimalList;
-        public Keeper(String name, List<Animal> AnimalList) : base(name)
+        public Keeper(String name) : base(name)
         {
-            this._AnimalList = AnimalList;
+            _AnimalList = new List<Animal>();
+            Role = "Keeper";
         }
 
-        public void Feed(string food)
+        public void Feed()
         {
+            string food;
             foreach (Animal animal in _AnimalList)
             {
-                animal.Eat(food);
-                Console.WriteLine(_name + " has fed " + animal.Name);
+                Console.WriteLine("What should " + _name + "feed " + animal.Name);
+                food = Console.ReadLine();
+                if (animal.Eat(food))
+                {
+                    Console.WriteLine(_name + " has fed " + animal.Name);
+                }
+                else
+                {
+                    Console.WriteLine(animal.Name + " doesn't eat that");
+                }
             }
         }
 
+        public void AssignAnimal(Animal animal)
+        {
+            _AnimalList.Add(animal);
+        }
     }
 }

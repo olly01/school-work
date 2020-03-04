@@ -7,9 +7,10 @@ namespace school_work
      public class Animal
     {
         public String Name;
-        private int Age;
-        private Boolean Sex;
-        private int Health;
+        public int Age;
+        public Boolean Sex;
+        public int Health;
+        public string Species;
         protected List<string> _diet;
 
         public Animal(string name, int age, Boolean sex, int health) // constructor
@@ -64,6 +65,11 @@ namespace school_work
         public void medicine()
         {
 
+        }
+
+        public override string ToString()
+        {
+            return $"Name: {Name} Age: {Age.ToString() + 1} Health: {Health}";
         }
     }
 }

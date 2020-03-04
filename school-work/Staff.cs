@@ -7,7 +7,7 @@ namespace school_work
     class Staff
     {
         public string _name; //Private Field
-
+        public string Role;
 
         public string Name //property
         {
