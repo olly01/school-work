@@ -65,5 +65,10 @@ namespace school_work
         {
 
         }
+
+        public override string ToString()
+        {
+            return $"Name: {Name} Age: {Age.ToString() + 1} Health: {Health}";
+        }
     }
 }

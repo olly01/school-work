@@ -20,11 +20,11 @@ namespace school_work
             Animal animal = new Animal("a", 1, true, 1);
 
 
-
             Console.WriteLine(bob);
 
 
             Penguin penguin = new Penguin("Penguin", 1, true, 3);
+            Console.WriteLine(penguin);
 
             Console.WriteLine(penguin.Eat("Fish"));
 
