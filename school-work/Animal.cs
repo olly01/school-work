@@ -10,8 +10,9 @@ namespace school_work
         private int Age;
         private Boolean Sex;
         private int Health;
+        protected List<string> _diet;
 
-        public Animal(string name, int age, Boolean sex, int health)
+        public Animal(string name, int age, Boolean sex, int health) // constructor
         {
             this.Name = name;
             this.Age = age;
@@ -19,17 +20,50 @@ namespace school_work
             this.Health = health;
         }
 
-
-        
-
-        protected List<string> _diet;
-
-        public List<string> Diet 
+        public bool Eat(string Food)
         {
-            get
+            foreach (string item in _diet)
             {
-                return _diet;
+                if (Food == item)
+                {
+                    return (true);
+                }
             }
+            return (false);
+        }
+
+        public Animal reproduce(string species, string baby_name, bool baby_sex)
+        {
+            if (species == "Toucan")
+            {
+                Toucan child = new Toucan(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else if (species == "Penguin")
+            {
+                Penguin child = new Penguin(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else if (species == "Pelican")
+            {
+                Pelican child = new Pelican(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else if (species == "Ostrich")
+            {
+                Ostrich child = new Ostrich(baby_name, 0, baby_sex, 10);
+                return (child);
+            }
+            else
+            {
+                Console.WriteLine("No mutant babies");
+                return (null);
+            }
+        }
+
+        public void medicine()
+        {
+
         }
     }
 }

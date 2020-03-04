@@ -6,7 +6,7 @@ namespace school_work
 {
     class Toucan : Bird
     {
-        public Toucan(string name, int age, Boolean sex, int health) : base(name, age, sex, health)
+        public Toucan(string name, int age, bool sex, int health) : base(name, age, sex, health)
         {
             _diet = new List<string>() { "Fruit", "Insects" };
         }

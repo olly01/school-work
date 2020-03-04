@@ -22,15 +22,24 @@ namespace school_work
 
 
             Console.WriteLine(bob);
+
+
+            Penguin penguin = new Penguin("Penguin", 1, true, 3);
+
+            Console.WriteLine(penguin.Eat("Fish"));
+
             Console.ReadLine();
 
-            Penguin penguin = new Penguin();
+            Console.WriteLine("A new ostrich chick has just hatched");
+            Console.WriteLine("What would you like to name it");
+            string name = Console.ReadLine();
+            Animal chick = animal.reproduce("Ostrich", name, true);
+            animallist.Add(chick);
 
-            foreach (String food in penguin.Diet)
+            foreach (Animal item in animallist)
             {
-                Console.WriteLine(food);
+                Console.WriteLine(item.Name);
             }
-            Console.ReadLine();
         }
     }
 }
