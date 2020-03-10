@@ -16,18 +16,9 @@ namespace school_work
         private bool shelter;
         private int plantLife;
 
-        public void set()
+        public Enclosure(string _enclosurename, string _contents, int _size, int _capcity, int _waterlevel, int _temp, bool _shelter, int _plantLife)
         {
-            Console.WriteLine("Write the name of enclosure");
-            enclosureName = Convert.ToString(Console.ReadLine());
-            Console.WriteLine("What are the dimentions of the enclosures: formation of (L x H)");
-            size = Convert.ToInt32(Console.ReadLine());
-            console.writeline("how many animals do you want ");
-            capacity = Convert.ToInt32(Console.ReadLine());
-            waterLevel = Convert.ToInt32(Console.ReadLine());
-            temp = Convert.ToInt32(Console.ReadLine());
-            shelter = Convert.ToBoolean(Console.ReadLine());
-            plantLife = Convert.ToInt32(Console.ReadLine());
+           
 
         }
 
