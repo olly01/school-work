@@ -8,7 +8,7 @@ namespace school_work
     {
         private List<Animal> animals = new List<Animal>();
         private string enclosureName;
-        private string _contents;
+        public string _contents;
         private int size;
         private int capacity;
         private int waterLevel;
