@@ -11,8 +11,8 @@ namespace school_work
 
             Zoo zoo = new Zoo();
             Random GetRandom = new Random();
-            bool sex;
-            int DetermineSex;
+            GenderType gender;
+            int DetermineGender;
 
             zoo.AddEnclosure("Toucan", 2, 1, 23, true, 3);
             zoo.AddEnclosure("Penguin", 2, 3, -3, false, 0);
@@ -21,58 +21,30 @@ namespace school_work
 
             for (int i= 1 ; i<=4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), sex, GetRandom.Next(0,10));
+                DetermineGender = GetRandom.Next(0, 2);
+                
+                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), (GenderType)DetermineGender, GetRandom.Next(0,10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), sex, GetRandom.Next(0, 10));
+                DetermineGender = GetRandom.Next(0, 2);
+
+                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), (GenderType)DetermineGender, GetRandom.Next(0, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), sex, GetRandom.Next(0, 10));
+                DetermineGender = GetRandom.Next(0, 2);
+
+                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), (GenderType)DetermineGender, GetRandom.Next(0, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), sex, GetRandom.Next(0, 10));
+                DetermineGender = GetRandom.Next(0, 2);
+
+                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), (GenderType)DetermineGender, GetRandom.Next(0, 10));
             }
 
             foreach (Animal animal in zoo.animals)
@@ -153,19 +125,29 @@ namespace school_work
                         species = Console.ReadLine();
                         Console.WriteLine("What is the animals age");
                         age = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("What is the animals sex: true for male, false for female");
-                        sex = Convert.ToBoolean(Console.ReadLine());
+                        Console.WriteLine("What is the animals gender: 1 for male, 0 for female");
+                        gender = (GenderType)(Convert.ToInt32((Console.ReadLine())));
                         Console.WriteLine("Out of 10, how healthy is the animal");
                         health = Convert.ToInt32(Console.ReadLine());
-                        zoo.AddAnimal(species, name, age, sex, health);
 
-                        foreach (Enclosure enclosure in zoo.enclosures)
+                        try
                         {
-                            if (zoo.animals[zoo.animals.Count].Species == enclosure._contents)
+                            Animal animal = zoo.AddAnimal(species, name, age, gender, health);
+
+                            foreach (Enclosure enclosure in zoo.enclosures)
                             {
-                                enclosure.AddAnimal(zoo.animals[zoo.animals.Count]);
+                                if (animal.Species == enclosure._contents)
+                                {
+                                    enclosure.AddAnimal(animal);
+                                }
                             }
+
                         }
+                        catch (ArgumentException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        
 
                         break;
                     case "5":

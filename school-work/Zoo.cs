@@ -6,8 +6,6 @@ namespace school_work
 {
     class Zoo
     {
-
-        //private List<Enclosures> enclosures = new List<Enclosures>(); 
         public List<Animal> animals = new List<Animal>();
         private List<Staff> _staff = new List<Staff>();
         public List<Enclosure> enclosures = new List<Enclosure>();
@@ -61,34 +59,28 @@ namespace school_work
             }
         }
 
-        public void AddAnimal(string species, string name, int age, bool sex, int health)
+        public Animal AddAnimal(string species, string name, int age, GenderType gender, int health)
         {
-            if (species == "Toucan")
+            Animal animal = null;
+            switch (species)
             {
-                Toucan NewToucan = new Toucan(name, age, sex, health);
-                animals.Add(NewToucan);
+                case "Toucan":
+                    animal = new Toucan(name, age, gender, health);
+                    break;
+                case "Ostrich":
+                    animal = new Ostrich(name, age, gender, health);
+                    break;
+                case "Penguin":
+                    animal = new Penguin(name, age, gender, health);
+                    break;
+                case "Pelican":
+                    animal = new Pelican(name, age, gender, health);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid Species.");
             }
-            else if (species == "Ostrich")
-            {
-                Ostrich NewOstrich = new Ostrich(name, age, sex, health);
-                animals.Add(NewOstrich);
-            }
-            else if (species == "Penguin")
-            {
-                Penguin NewPenguin = new Penguin(name, age, sex, health);
-                animals.Add(NewPenguin);
-            }
-            else if (species == "Pelican")
-            {
-                Pelican NewPelican = new Pelican(name, age, sex, health);
-                animals.Add(NewPelican);
-            }
-            else
-            {
-                Console.WriteLine("Invalid Species");
-            }
-
-
+            animals.Add(animal);
+            return animal;
         }
 
         public void AddStaff(string role, string name)
@@ -117,18 +109,7 @@ namespace school_work
                 Console.WriteLine(enclosure._contents + " Enclosure:");
                 foreach (Animal animal in enclosure.animals)
                 {
-                    Console.WriteLine(animal.Name);
-                    Console.WriteLine("Species: " + animal.Species);
-                    Console.WriteLine(("Age: " + animal.Age));
-                    Console.WriteLine("Health: " + animal.Health);
-                    if (animal.Sex == true)
-                    {
-                        Console.WriteLine("Sex: Male");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sex: Female");
-                    }
+                    Console.WriteLine(animal);
                     Console.WriteLine();
                 }
             }
