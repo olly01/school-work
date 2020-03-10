@@ -25,7 +25,7 @@ namespace school_work
             this.waterLevel = _waterLevel;
             this.temp = _temp;
             this.shelter = _shelter;
-            this.shelter = _plantLife;
+            this.plantLife = _plantLife;
         }
 
         public void addAnimals(Animal _newAnimal )
