@@ -55,7 +55,7 @@ namespace school_work
             {
                 foreach (Enclosure enclosure in zoo.enclosures)
                 {
-                    if (enclosure._contents == animal.Species)
+                    if (enclosure.contents == animal.Species)
                     {
                         enclosure.addAnimals(animal);
                     }
