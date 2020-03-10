@@ -103,16 +103,12 @@ namespace school_work
 
         public void ShowAnimals()
         {
-            foreach (Enclosure enclosure in enclosures)
-            {
-                Console.WriteLine();
-                Console.WriteLine(enclosure._contents + " Enclosure:");
-                foreach (Animal animal in enclosure.animals)
+                foreach (Animal animal in animals)
                 {
                     Console.WriteLine(animal);
                     Console.WriteLine();
                 }
-            }
+            
         }
 
         public void ShowStaff()
@@ -124,9 +120,9 @@ namespace school_work
             }
         }
 
-        public void AddEnclosure(string contents, int size, int WaterLevel, int temperature, bool enclosed, int PlantLife)
+        public void AddEnclosure(string contents, int size, int WaterLevel, int temperature, bool enclosed, int PlantLife, bool shelter, string name, int capacity)
         {
-            Enclosure NewEnclosure = new Enclosure(contents, size, WaterLevel, temperature, enclosed, PlantLife);
+            Enclosure NewEnclosure = new Enclosure(name, contents,size,capacity,WaterLevel, temperature, shelter, PlantLife);
             enclosures.Add(NewEnclosure);
         }
 
