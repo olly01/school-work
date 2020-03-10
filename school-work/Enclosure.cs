@@ -31,17 +31,17 @@ namespace school_work
 
         }
 
-        public void addAnimals(Animal _newAnimal, bool _didItWork)
+        public void addAnimals(Animal _newAnimal )
         {
             if (animals.Count < capacity)
             {
                 animals.Add(_newAnimal);
-                _didItWork = true;
+                
             }
             else if (animals.Count >= capacity)
             {
                 Console.WriteLine("Theres not enough space, please try another enclosure.");
-                _didItWork = false;
+                
             
             }
 
