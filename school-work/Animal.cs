@@ -11,7 +11,7 @@ namespace school_work
         public Boolean Sex;
         public int Health;
         public string Species;
-        protected List<string> _diet;
+        public List<string> _diet;
 
         public Animal(string name, int age, Boolean sex, int health) // constructor
         {
@@ -19,6 +19,7 @@ namespace school_work
             this.Age = age;
             this.Sex = sex;
             this.Health = health;
+            _diet = new List<string>();
         }
 
         public bool Eat(string Food)
