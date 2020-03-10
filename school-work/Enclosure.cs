@@ -8,6 +8,7 @@ namespace school_work
     {
         private List<Animal> animals = new List<Animal>();
         private string enclosureName;
+        private string _contents;
         private int size;
         private int capacity;
         private int waterLevel;
@@ -17,8 +18,11 @@ namespace school_work
 
         public void set()
         {
+            Console.WriteLine("Write the name of enclosure");
             enclosureName = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("What are the dimentions of the enclosures: formation of (L x H)");
             size = Convert.ToInt32(Console.ReadLine());
+            console.writeline("how many animals do you want ");
             capacity = Convert.ToInt32(Console.ReadLine());
             waterLevel = Convert.ToInt32(Console.ReadLine());
             temp = Convert.ToInt32(Console.ReadLine());
@@ -27,16 +31,18 @@ namespace school_work
 
         }
 
-        public void addAnimals(Animal _newAnimal)
+        public void addAnimals(Animal _newAnimal, bool _didItWork)
         {
             if (animals.Count < capacity)
             {
                 animals.Add(_newAnimal);
-
+                _didItWork = true;
             }
             else if (animals.Count >= capacity)
             {
                 Console.WriteLine("Theres not enough space, please try another enclosure.");
+                _didItWork = false;
+            
             }
 
         }
