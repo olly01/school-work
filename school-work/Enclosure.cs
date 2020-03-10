@@ -8,7 +8,7 @@ namespace school_work
     {
         private List<Animal> animals = new List<Animal>();
         private string enclosureName;
-        public string _contents;
+        public string contents;
         private int size;
         private int capacity;
         private int waterLevel;
@@ -16,10 +16,16 @@ namespace school_work
         private bool shelter;
         private int plantLife;
 
-        public Enclosure(string _enclosurename, string _contents, int _size, int _capcity, int _waterlevel, int _temp, bool _shelter, int _plantLife)
+        public Enclosure(string _enclosureName, string _contents, int _size, int _capacity, int _waterLevel, int _temp, bool _shelter, int _plantLife)
         {
-           
-
+            this.enclosureName = _enclosureName;
+            this.contents = _contents;
+            this.size= _size;
+            this.capacity = _capacity;
+            this.waterLevel = _waterLevel;
+            this.temp = _temp;
+            this.shelter = _shelter;
+            this.shelter = _plantLife;
         }
 
         public void addAnimals(Animal _newAnimal )
@@ -42,9 +48,6 @@ namespace school_work
         {
             animals.RemoveAt(_numberInList);
         }
-
-
-
 
         public void Print()
         {
