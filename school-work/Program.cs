@@ -16,10 +16,10 @@ namespace school_work
             int DetermineSex; // determine sex will either equal 1 or 2 and this number will be for a specific sex
 
             //19 - 22 puts enclosures into the zoo. parameters go (contents, size, waterlevel, temperature, fully enclosed, plantlife)
-            zoo.AddEnclosure("Toucan", 2, 1, 23, true, 3);
-            zoo.AddEnclosure("Penguin", 2, 3, -3, false, 0);
-            zoo.AddEnclosure("Pelican", 2, 2, 20, false, 2);
-            zoo.AddEnclosure("Ostrich", 3, 1, 30, false, 1);
+            zoo.AddEnclosure("Toucan", 2, 1, 23, true, 3, true, "Toucan Enclosure 1", 10);
+            zoo.AddEnclosure("Penguin", 2, 3, -3, false, 0, true, "Penguin Enclosure 1", 10);
+            zoo.AddEnclosure("Pelican", 2, 2, 20, false, 2, true, "Pelican Enclosure 1", 10);
+            zoo.AddEnclosure("Ostrich", 3, 1, 30, false, 1, true, "Ostrich Enclosure 1", 10);
 
             // Lines 25 - 79 create animals, they do this by doing the contents of a for loop 4 times, and each time creates a new animal of the same type, this for loop is repeated for each animal species available
             for (int i= 1 ; i<=4; i++)
@@ -85,7 +85,7 @@ namespace school_work
                 {
                     if (enclosure._contents == animal.Species)
                     {
-                        enclosure.AddAnimal(animal);
+                        enclosure.addAnimals(animal);
                     }
                 }
             }
@@ -171,7 +171,7 @@ namespace school_work
                         {
                             if (zoo.animals[zoo.animals.Count].Species == enclosure._contents)
                             {
-                                enclosure.AddAnimal(zoo.animals[zoo.animals.Count]);
+                                enclosure.addAnimals(zoo.animals[zoo.animals.Count]);
                             }
                         }
 
