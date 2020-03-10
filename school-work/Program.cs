@@ -83,7 +83,7 @@ namespace school_work
             {
                 foreach (Enclosure enclosure in zoo.enclosures)
                 {
-                    if (enclosure._contents == animal.Species)
+                    if (enclosure.contents == animal.Species)
                     {
                         enclosure.addAnimals(animal);
                     }
@@ -169,12 +169,11 @@ namespace school_work
 
                         foreach (Enclosure enclosure in zoo.enclosures)
                         {
-                            if (zoo.animals[zoo.animals.Count].Species == enclosure._contents)
+                            if (zoo.animals[(zoo.animals.Count)-1].Species == enclosure.contents)
                             {
-                                enclosure.addAnimals(zoo.animals[zoo.animals.Count]);
+                                enclosure.addAnimals(zoo.animals[(zoo.animals.Count)-1]);
                             }
                         }
-
                         break;
                     case "5":
                         Console.WriteLine("What is the new employee's name");
