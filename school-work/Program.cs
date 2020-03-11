@@ -26,28 +26,28 @@ namespace school_work
             {
                 DetermineGender = GetRandom.Next(0, 2);
                 
-                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), (GenderType)DetermineGender, GetRandom.Next(0,10));
+                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), (GenderType)DetermineGender, GetRandom.Next(1,10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
                 DetermineGender = GetRandom.Next(0, 2);
 
-                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), (GenderType)DetermineGender, GetRandom.Next(0, 10));
+                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), (GenderType)DetermineGender, GetRandom.Next(1, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
                 DetermineGender = GetRandom.Next(0, 2);
 
-                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), (GenderType)DetermineGender, GetRandom.Next(0, 10));
+                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), (GenderType)DetermineGender, GetRandom.Next(1, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
                 DetermineGender = GetRandom.Next(0, 2);
 
-                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), (GenderType)DetermineGender, GetRandom.Next(0, 10));
+                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), (GenderType)DetermineGender, GetRandom.Next(1, 10));
             }
 
             // lines 82-91 puts animals in enclosures by comparing the name of the species to the contents of the enclosure and only putting an animal in if its  species matches the contents of the enclosure
@@ -114,7 +114,12 @@ namespace school_work
                 switch(choice)
                 {
                     case "1":
-                        zoo.ShowAnimals();
+                        foreach (Enclosure enclosure in zoo.enclosures)
+                        {
+                            Console.WriteLine(enclosure.enclosureName);
+                            enclosure.ShowAnimals();
+                            Console.WriteLine();
+                        }
                         break;
                     case "2":
                         zoo.ShowStaff();
@@ -136,8 +141,8 @@ namespace school_work
                         species = Console.ReadLine();
                         Console.WriteLine("What is the animals age");
                         age = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("What is the animals gender: 1 for male, 0 for female");
-                        gender = (GenderType)(Convert.ToInt32((Console.ReadLine())));
+                        Console.WriteLine("What is the animals gender: 1 for female, 2 for male");
+                        gender = (GenderType)(Convert.ToInt32((Console.ReadLine()))-1);
                         Console.WriteLine("Out of 10, how healthy is the animal");
                         health = Convert.ToInt32(Console.ReadLine());
 
@@ -147,9 +152,9 @@ namespace school_work
 
                             foreach (Enclosure enclosure in zoo.enclosures)
                             {
-                                if (animal.Species == enclosure._contents)
+                                if (animal.Species == enclosure.contents)
                                 {
-                                    enclosure.AddAnimal(animal);
+                                    enclosure.addAnimals(animal);
                                 }
                             }
 

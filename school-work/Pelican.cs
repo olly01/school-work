@@ -8,7 +8,7 @@ namespace school_work
     {
         public Pelican(string name, int age, GenderType gender, int health) : base(name, age, gender, health)
         {
-            _diet = new List<string>() { "Amphibians", "Turtles", "Crustaceans", "Insects" };
+            _diet = new List<string>() { "amphibians", "turtles", "crustaceans", "insects" };
             Species = "Pelican";
         }
     }

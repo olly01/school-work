@@ -8,8 +8,8 @@ namespace school_work
     {
         public Toucan(string name, int age, GenderType gender, int health) : base(name, age, gender, health)
         {
-            _diet.Add("Fruit");
-            _diet.Add("Insects");
+            _diet.Add("fruit");
+            _diet.Add("insects");
             Species = "Toucan";
         }
     }

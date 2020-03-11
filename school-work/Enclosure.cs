@@ -7,7 +7,7 @@ namespace school_work
     class Enclosure
     {
         private List<Animal> animals = new List<Animal>();
-        private string enclosureName;
+        public string enclosureName;
         public string contents;
         private int size;
         private int capacity;
@@ -61,6 +61,14 @@ namespace school_work
             Console.WriteLine("Temperature: " + temp);
             Console.WriteLine("Shelter: " + shelter);
             Console.WriteLine("Amount of Plant Life: " + plantLife);
+        }
+
+        public void ShowAnimals()
+        {
+            foreach (Animal animal in animals)
+            {
+                Console.WriteLine(animal.ToString());
+            }
         }
     }
 }
