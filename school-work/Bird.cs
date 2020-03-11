@@ -8,7 +8,7 @@ namespace school_work
     {
         protected bool _canFly;
 
-        public Bird(string name, int age, Boolean sex, int health) : base( name,  age,  sex, health)
+        public Bird(string name, int age, GenderType gender, int health) : base( name,  age,  gender, health)
         {
             
         }

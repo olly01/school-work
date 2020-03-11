@@ -12,8 +12,8 @@ namespace school_work
             Zoo zoo = new Zoo();
             
             Random GetRandom = new Random();
-            bool sex;
-            int DetermineSex; // determine sex will either equal 1 or 2 and this number will be for a specific sex
+            GenderType gender;
+            int DetermineGender;
 
             //19 - 22 puts enclosures into the zoo. parameters go (contents, size, waterlevel, temperature, fully enclosed, plantlife)
             zoo.AddEnclosure("Toucan", 2, 1, 23, true, 3, true, "Toucan Enclosure 1", 10);
@@ -24,58 +24,30 @@ namespace school_work
             // Lines 25 - 79 create animals, they do this by doing the contents of a for loop 4 times, and each time creates a new animal of the same type, this for loop is repeated for each animal species available
             for (int i= 1 ; i<=4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), sex, GetRandom.Next(0,10));
+                DetermineGender = GetRandom.Next(0, 2);
+                
+                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), (GenderType)DetermineGender, GetRandom.Next(0,10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), sex, GetRandom.Next(0, 10));
+                DetermineGender = GetRandom.Next(0, 2);
+
+                zoo.AddAnimal("Penguin", "Penguin" + i, GetRandom.Next(0, 25), (GenderType)DetermineGender, GetRandom.Next(0, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), sex, GetRandom.Next(0, 10));
+                DetermineGender = GetRandom.Next(0, 2);
+
+                zoo.AddAnimal("Toucan", "Toucan" + i, GetRandom.Next(0, 20), (GenderType)DetermineGender, GetRandom.Next(0, 10));
             }
 
             for (int i = 1; i <= 4; i++)
             {
-                DetermineSex = GetRandom.Next(1, 3);
-                if (DetermineSex == 1)
-                {
-                    sex = true;
-                }
-                else
-                {
-                    sex = false;
-                }
-                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), sex, GetRandom.Next(0, 10));
+                DetermineGender = GetRandom.Next(0, 2);
+
+                zoo.AddAnimal("Ostrich", "Ostrich" + i, GetRandom.Next(0, 50), (GenderType)DetermineGender, GetRandom.Next(0, 10));
             }
 
             // lines 82-91 puts animals in enclosures by comparing the name of the species to the contents of the enclosure and only putting an animal in if its  species matches the contents of the enclosure
@@ -164,19 +136,30 @@ namespace school_work
                         species = Console.ReadLine();
                         Console.WriteLine("What is the animals age");
                         age = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("What is the animals sex: true for male, false for female");
-                        sex = Convert.ToBoolean(Console.ReadLine());
+                        Console.WriteLine("What is the animals gender: 1 for male, 0 for female");
+                        gender = (GenderType)(Convert.ToInt32((Console.ReadLine())));
                         Console.WriteLine("Out of 10, how healthy is the animal");
                         health = Convert.ToInt32(Console.ReadLine());
-                        zoo.AddAnimal(species, name, age, sex, health);
 
-                        foreach (Enclosure enclosure in zoo.enclosures)
+                        try
                         {
-                            if (zoo.animals[(zoo.animals.Count)-1].Species == enclosure.contents)
+                            Animal animal = zoo.AddAnimal(species, name, age, gender, health);
+
+                            foreach (Enclosure enclosure in zoo.enclosures)
                             {
-                                enclosure.addAnimals(zoo.animals[(zoo.animals.Count)-1]);
+                                if (animal.Species == enclosure._contents)
+                                {
+                                    enclosure.AddAnimal(animal);
+                                }
                             }
+
                         }
+                        catch (ArgumentException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        
+
                         break;
                     case "5":
                         Console.WriteLine("What is the new employee's name");
