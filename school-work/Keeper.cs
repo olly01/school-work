@@ -11,9 +11,10 @@ namespace school_work
 
         public Keeper(String name, Zoo zoo) : base(name)
         {
-            this.zoo = zoo;
             _AnimalList = new List<Animal>();
             Role = "Keeper";
+            this.zoo = zoo;
+            
         }
 
         public void Feed()

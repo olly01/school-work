@@ -22,6 +22,7 @@ namespace school_work
             int age;
             int health;
             string role;
+            int a;
             GenderType gender;
             // while loop means than you can keep doing stuff to the zoo till you want to leave
             while (choice != "exit")
@@ -53,14 +54,33 @@ namespace school_work
                         zoo.ShowStaff();
                         break;
                     case "3":
-
+                        Console.WriteLine("Which keeper is feeding?");
                         foreach (Staff staff in zoo.Staff)
                         {
                             if (staff is Keeper keeper)
                             {
-                                keeper.Feed();
+                                Console.WriteLine();
+                                Console.WriteLine(staff.IDNum + ") Name:" + staff.Name + " Animals:" );
+                                foreach(Animal animal in keeper._AnimalList)
+                                {
+                                    Console.Write(animal.Name + " ");
+                                }
                             }
                         }
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        a = Convert.ToInt32(Console.ReadLine());
+                        foreach (Staff staff in zoo.Staff)
+                        {
+                            if (staff is Keeper keeper)
+                            {
+                                if (a == keeper.IDNum)
+                                {
+                                    keeper.Feed();
+                                }
+                            }
+                        }
+
                         break;
                     case "4":
                         Console.WriteLine("What is the animals name");

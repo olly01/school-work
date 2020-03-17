@@ -8,6 +8,8 @@ namespace school_work
     {
         public string _name; //Private Field
         public string Role;
+        static int instance = 0;
+        public int IDNum;
 
         public string Name //property
         {
@@ -19,6 +21,8 @@ namespace school_work
         public Staff(string name) // constructor
         {
             this.Name = name;
+            instance = instance + 1;
+            IDNum = instance;
         }
 
     }
