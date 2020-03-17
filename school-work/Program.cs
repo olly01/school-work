@@ -10,9 +10,110 @@ namespace school_work
         {
             // Makes new zoo
             Zoo zoo = new Zoo();
-            
-            Random GetRandom = new Random();
+            SetUp(zoo);
+            Menu(zoo);
+        }
+
+        private static string Menu(Zoo zoo)
+        {
+            string choice = "banana";
+            string name;
+            string species;
+            int age;
+            int health;
+            string role;
             GenderType gender;
+            // while loop means than you can keep doing stuff to the zoo till you want to leave
+            while (choice != "exit")
+            {
+                Console.WriteLine();
+                Console.WriteLine("What would you like to do");
+                Console.WriteLine("1) View List of animals");
+                Console.WriteLine("2) View List of Staff");
+                Console.WriteLine("3) Feed the animals");
+                Console.WriteLine("4) Add an animal");
+                Console.WriteLine("5) Hire a staff member");
+                Console.WriteLine("Press anything else to exit");
+                Console.WriteLine();
+
+                choice = Console.ReadLine();
+
+                // the switch case statement lets the user choose a procedure and passes the appropriate information into them
+                switch (choice)
+                {
+                    case "1":
+                        foreach (Enclosure enclosure in zoo.enclosures)
+                        {
+                            Console.WriteLine(enclosure.enclosureName);
+                            enclosure.ShowAnimals();
+                            Console.WriteLine();
+                        }
+                        break;
+                    case "2":
+                        zoo.ShowStaff();
+                        break;
+                    case "3":
+
+                        foreach (Staff staff in zoo.Staff)
+                        {
+                            if (staff is Keeper keeper)
+                            {
+                                keeper.Feed();
+                            }
+                        }
+                        break;
+                    case "4":
+                        Console.WriteLine("What is the animals name");
+                        name = Console.ReadLine();
+                        Console.WriteLine("What is the animals species");
+                        species = Console.ReadLine();
+                        Console.WriteLine("What is the animals age");
+                        age = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("What is the animals gender: 1 for female, 2 for male");
+                        gender = (GenderType)(Convert.ToInt32((Console.ReadLine())) - 1);
+                        Console.WriteLine("Out of 10, how healthy is the animal");
+                        health = Convert.ToInt32(Console.ReadLine());
+
+                        try
+                        {
+                            Animal animal = zoo.AddAnimal(species, name, age, gender, health);
+
+                            foreach (Enclosure enclosure in zoo.enclosures)
+                            {
+                                if (animal.Species == enclosure.contents)
+                                {
+                                    enclosure.addAnimals(animal);
+                                }
+                            }
+
+                        }
+                        catch (ArgumentException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+
+
+                        break;
+                    case "5":
+                        Console.WriteLine("What is the new employee's name");
+                        name = Console.ReadLine();
+                        Console.WriteLine("What is the new employee's role");
+                        role = Console.ReadLine();
+                        zoo.AddStaff(role, name);
+                        break;
+                    default:
+                        choice = "exit";
+                        break;
+                }
+                Console.ReadLine();
+            }
+
+            return choice;
+        }
+
+        private static void SetUp(Zoo zoo)
+        {
+            Random GetRandom = new Random();
             int DetermineGender;
 
             //19 - 22 puts enclosures into the zoo. parameters go (contents, size, waterlevel, temperature, fully enclosed, plantlife)
@@ -22,11 +123,11 @@ namespace school_work
             zoo.AddEnclosure("Ostrich", 3, 1, 30, false, 1, true, "Ostrich Enclosure 1", 10);
 
             // Lines 25 - 79 create animals, they do this by doing the contents of a for loop 4 times, and each time creates a new animal of the same type, this for loop is repeated for each animal species available
-            for (int i= 1 ; i<=4; i++)
+            for (int i = 1; i <= 4; i++)
             {
                 DetermineGender = GetRandom.Next(0, 2);
-                
-                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0,20), (GenderType)DetermineGender, GetRandom.Next(1,10));
+
+                zoo.AddAnimal("Pelican", "Pelican" + i, GetRandom.Next(0, 20), (GenderType)DetermineGender, GetRandom.Next(1, 10));
             }
 
             for (int i = 1; i <= 4; i++)
@@ -87,99 +188,6 @@ namespace school_work
                     }
                 }
             }
-
-            string choice = "banana";
-            string name;
-            string species;
-            int age;
-            int health;
-            string role;
-
-            // while loop means than you can keep doing stuff to the zoo till you want to leave
-            while (choice != "exit")
-            {
-                Console.WriteLine();
-                Console.WriteLine("What would you like to do");
-                Console.WriteLine("1) View List of animals");
-                Console.WriteLine("2) View List of Staff");
-                Console.WriteLine("3) Feed the animals");
-                Console.WriteLine("4) Add an animal");
-                Console.WriteLine("5) Hire a staff member");
-                Console.WriteLine("Press anything else to exit");
-                Console.WriteLine();
-
-                choice = Console.ReadLine();
-
-                // the switch case statement lets the user choose a procedure and passes the appropriate information into them
-                switch(choice)
-                {
-                    case "1":
-                        foreach (Enclosure enclosure in zoo.enclosures)
-                        {
-                            Console.WriteLine(enclosure.enclosureName);
-                            enclosure.ShowAnimals();
-                            Console.WriteLine();
-                        }
-                        break;
-                    case "2":
-                        zoo.ShowStaff();
-                        break;
-                    case "3":
-
-                        foreach (Staff staff in zoo.Staff)
-                        {
-                            if (staff is Keeper keeper)
-                            {
-                                keeper.Feed();
-                            }
-                        }
-                        break;
-                    case "4":
-                        Console.WriteLine("What is the animals name");
-                        name = Console.ReadLine();
-                        Console.WriteLine("What is the animals species");
-                        species = Console.ReadLine();
-                        Console.WriteLine("What is the animals age");
-                        age = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("What is the animals gender: 1 for female, 2 for male");
-                        gender = (GenderType)(Convert.ToInt32((Console.ReadLine()))-1);
-                        Console.WriteLine("Out of 10, how healthy is the animal");
-                        health = Convert.ToInt32(Console.ReadLine());
-
-                        try
-                        {
-                            Animal animal = zoo.AddAnimal(species, name, age, gender, health);
-
-                            foreach (Enclosure enclosure in zoo.enclosures)
-                            {
-                                if (animal.Species == enclosure.contents)
-                                {
-                                    enclosure.addAnimals(animal);
-                                }
-                            }
-
-                        }
-                        catch (ArgumentException e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
-                        
-
-                        break;
-                    case "5":
-                        Console.WriteLine("What is the new employee's name");
-                        name = Console.ReadLine();
-                        Console.WriteLine("What is the new employee's role");
-                        role = Console.ReadLine();
-                        zoo.AddStaff(role, name);
-                        break;
-                    default:
-                        choice = "exit";
-                        break;
-                }
-                Console.ReadLine();
-            }
-            }
-
         }
+    }
     }

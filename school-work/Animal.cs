@@ -16,6 +16,8 @@ namespace school_work
         public string Species;
 
         public List<string> _diet { get; protected set; }
+        static int instance = 0;
+        public int IDnum { get; set; }
         public Animal(string name, int age, GenderType gender, int health) // constructor sets values
         {
             this.Name = name;
@@ -23,6 +25,8 @@ namespace school_work
             this.Gender = gender;
             this.Health = health;
             _diet = new List<string>();
+            instance = instance + 1;
+            IDnum = instance;
 
 
         }
@@ -41,31 +45,26 @@ namespace school_work
 
         public Animal reproduce(string species, string baby_name, GenderType baby_gender)
         {
-            if (species == "Toucan")
+            Animal child = null;
+
+            switch (species)
             {
-                Toucan child = new Toucan(baby_name, 0, baby_gender, 10);
-                return (child);
+                case "Toucan":
+                    child = new Toucan(baby_name, 0, baby_gender, 10);
+                    break;
+                case "Penguin":
+                    child = new Penguin(baby_name, 0, baby_gender, 10);
+                    break;
+                case "Pelican":
+                    child = new Pelican(baby_name, 0, baby_gender, 10);
+                    break;
+                case "Ostrich":
+                    child = new Ostrich(baby_name, 0, baby_gender, 10);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid Species.");
             }
-            else if (species == "Penguin")
-            {
-                Penguin child = new Penguin(baby_name, 0, baby_gender, 10);
-                return (child);
-            }
-            else if (species == "Pelican")
-            {
-                Pelican child = new Pelican(baby_name, 0, baby_gender, 10);
-                return (child);
-            }
-            else if (species == "Ostrich")
-            {
-                Ostrich child = new Ostrich(baby_name, 0, baby_gender, 10);
-                return (child);
-            }
-            else
-            {
-                Console.WriteLine("No mutant babies");
-                return (null);
-            }
+            return (child);
         }
 
         public void medicine()
@@ -75,7 +74,7 @@ namespace school_work
 
         public override string ToString()
         {
-            return $"Name: {Name} Age: {Age} Health: {Health} Gender: {Gender}" ;
+            return $"Name: {Name} Age: {Age} Health: {Health} Gender: {Gender} ID Number: {IDnum}" ;
         }
     }
 }
